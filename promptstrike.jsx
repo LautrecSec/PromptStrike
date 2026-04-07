@@ -76,11 +76,11 @@ const PHASES = [
 ];
 
 const FRAMEWORKS = [
-  { name: "OWASP LLM Top 10 (2025)", url: "https://genai.owasp.org/llm-top-10/" },
-  { name: "MITRE ATLAS", url: "https://atlas.mitre.org/" },
-  { name: "NIST AI RMF", url: "https://www.nist.gov/artificial-intelligence/risk-management-framework" },
-  { name: "EU AI Act", url: "https://artificialintelligenceact.eu/" },
-  { name: "CSA Agentic AI Red Team Guide", url: "https://cloudsecurityalliance.org/artifacts/agentic-ai-red-teaming-guide" },
+  { name: "OWASP LLM Top 10 (2025)", url: "https://genai.owasp.org/llm-top-10/", desc: "The industry-standard list of the 10 most critical security vulnerabilities in LLM applications" },
+  { name: "MITRE ATLAS", url: "https://atlas.mitre.org/", desc: "Adversarial Threat Landscape for AI Systems — knowledge base of adversarial tactics and techniques" },
+  { name: "NIST AI RMF", url: "https://www.nist.gov/artificial-intelligence/risk-management-framework", desc: "AI Risk Management Framework — Map, Measure, Manage, Govern functions for AI risk lifecycle" },
+  { name: "Google SAIF", url: "https://saif.google/", desc: "Secure AI Framework — risk map, controls, and self-assessment for AI security across Data, Infrastructure, Model & Application" },
+  { name: "CSA Agentic AI Red Team Guide", url: "https://cloudsecurityalliance.org/artifacts/agentic-ai-red-teaming-guide", desc: "Testing framework for AI agent vulnerabilities — permission escalation, hallucination, orchestration flaws" },
 ];
 
 const TOOLS = [
@@ -435,15 +435,28 @@ export default function RedTeamMethodology() {
       {view === "frameworks" && (
         <div style={{ padding: "24px 28px", maxWidth: 700 }}>
           <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 18, fontWeight: 600, color: "#F0F0F5", marginBottom: 6 }}>Alignment Frameworks</h3>
-          <p style={{ fontSize: 12, color: "#555", marginBottom: 20, lineHeight: 1.6 }}>Industry standards and regulatory frameworks this methodology maps to.</p>
+          <p style={{ fontSize: 12, color: "#555", marginBottom: 20, lineHeight: 1.6 }}>Industry standards and regulatory frameworks this methodology maps to. Click any card to open the resource.</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {FRAMEWORKS.map((fw, i) => (
-              <div className="ref-card" key={i}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: "#DDD" }}>{fw.name}</div>
-                  <span style={{ fontSize: 11, color: "#0891B2" }}>{fw.url.replace("https://", "").split("/")[0]}</span>
+              <a href={fw.url} target="_blank" rel="noopener noreferrer" key={i} style={{ textDecoration: "none", color: "inherit" }}>
+                <div className="ref-card" style={{ cursor: "pointer", borderColor: "#1E1E2E", transition: "all 0.25s" }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = "#0891B2"; e.currentTarget.style.boxShadow = "0 0 16px rgba(8,145,178,0.08)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = "#1E1E2E"; e.currentTarget.style.boxShadow = "none"; }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16 }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: "#DDD", marginBottom: 4 }}>{fw.name}</div>
+                      {fw.desc && <div style={{ fontSize: 11, color: "#666", lineHeight: 1.5 }}>{fw.desc}</div>}
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0, marginTop: 2 }}>
+                      <span style={{ fontSize: 10, color: "#0891B2", fontWeight: 500 }}>{fw.url.replace("https://","").replace("www.","").split("/")[0]}</span>
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ flexShrink: 0 }}>
+                        <path d="M3.5 1.5H10.5V8.5" stroke="#0891B2" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M10.5 1.5L1.5 10.5" stroke="#0891B2" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
           <div className="ref-card" style={{ marginTop: 24, borderColor: "#E8453C33" }}>
