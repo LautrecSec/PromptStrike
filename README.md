@@ -227,7 +227,7 @@ See [SECURITY.md](SECURITY.md) for safe-use and vulnerability-reporting guidance
 
 ## Author
 
-Built by [Simon Kudla / LautrecSec](https://github.com/LautrecSec) as a practical AI security and red-team engineering project.
+[Simon Kudla / LautrecSec](https://github.com/LautrecSec) as a practical AI security and red-team engineering project.
 
 ## License
 
