@@ -259,6 +259,7 @@ export default function App() {
       <footer>
         <strong>PromptStrike</strong>
         <span>Built as a practical AI red-team methodology, not a one-click exploitation framework.</span>
+        <a href="https://github.com/LautrecSec" target="_blank" rel="noreferrer">Simon Kudla / LautrecSec ↗</a>
       </footer>
     </main>
   );

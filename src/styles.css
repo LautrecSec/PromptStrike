@@ -107,3 +107,5 @@ footer strong { color: #9c9ca8; }
   .technique-meta { justify-content: space-between; }
   footer { flex-direction: column; padding-left: 16px; padding-right: 16px; }
 }
+footer a { color: #8ea6bb; text-decoration: none; white-space: nowrap; }
+footer a:hover { color: #c4d7e8; }
